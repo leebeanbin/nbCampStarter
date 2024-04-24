@@ -1,4 +1,4 @@
-package weekOne;
+package weekOne.cooking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
