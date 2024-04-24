@@ -424,3 +424,9 @@ Reduce dependencies amongst the code modules, making the system easier to unders
 - Problem : High-level modules might depend on low-level modules directly, making the codebase rigid and difficult to maintain or test due to the hard-coded dependencies.
     - Dependency Injection (DI): Use dependency injection to manage the creation and binding of dependent objects externally rather than within the components themselves. DI frameworks like Spring or Guice can help manage these dependencies smoothly.
     - Abstraction Layers: Create abstraction layers such as interfaces or abstract classes that high-level modules can depend on, while the implementation details are left to the lower-level modules that are plugged in at runtime or during configuration.
+
+---
+
+> **References**
+> 1. [OOP](https://cocococo.tistory.com/entry/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8DOOP%EB%9E%80)
+> 2. [김영한님 Spring Core](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B8%B0%EB%B3%B8%ED%8E%B8/dashboard)
