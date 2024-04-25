@@ -1,4 +1,4 @@
-package algorithmOne;
+package algorithmOne.codeKata.baekjoon;
 
 
 /*
