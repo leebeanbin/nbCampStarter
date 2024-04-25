@@ -1,20 +1,26 @@
-package weekOne.cooking.calculatorTwo;
+package weekOne.calculatorTwo;
+
+import weekOne.calculatorTwo.exception.CustomException;
 
 import java.util.Scanner;
 
 public class App {
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws CustomException {
 
+        IntegratedService integratedService;
+
         // 원 넓이 / 사칙연산 선택
-        Scanner scanner = new Scanner(System.in);
-
-
         System.out.print("Which mode do you want to play? (Circle/Operators) : ");
-        switch (scanner.nextLine()){
+        String mode = scanner.nextLine();
+        switch (mode){
             case "Circle":
                 System.out.print("반지름의 길이를 입력하세요 : ");
                 int numOne = Integer.parseInt(scanner.next());
-                CircleCalculator circleCalculator = new CircleCalculator(numOne);
+
+                integratedService = new IntegratedService(numOne);
+                integratedService.DataPrint(mode);
+
                 break;
 
             case "Operators":
@@ -25,25 +31,33 @@ public class App {
                 System.out.print("사용할 연산자를 입력하세요 : ");
                 char oper = scanner.next().charAt(0);
 
-                OperateCalculator operateCalculator = new OperateCalculator(num, numTwo,oper);
+                integratedService = new IntegratedService(num, numTwo, oper);
+                integratedService.DataPrint(mode);
                 break;
         }
 
+
+
+
+
+    }
+
+    public static void otherProcess(IntegratedService integratedService){
         System.out.print("Continue? (exit / remove / inquiry) ");
         switch (scanner.next()) {
             case "exit":
-                System.out.println("Done");
+                integratedService.exited();
                 break;
             case "remove":
                 // remove first value.
+                integratedService.remove();
                 break;
             case "inquiry":
                 // Basket status
+                integratedService.inquiry();
                 break;
             default:
                 System.out.println("This is not a valid operation.");
         }
-
-
     }
 }

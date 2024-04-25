@@ -33,7 +33,7 @@ public class Calculator {
             //리스트를 사용하여 값을 무한하게 저장하는 방법
             basket.add(result);
             nextWork(basket, arr);
-
+            break;
         }
     }
 

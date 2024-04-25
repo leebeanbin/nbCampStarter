@@ -1,4 +1,4 @@
-package weekOne.cooking.calculatorTwo;
+package weekOne.calculatorTwo.exception;
 
 public class CustomException extends Exception{
     public CustomException() {

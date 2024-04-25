@@ -1,4 +1,4 @@
-package weekOne.cooking.calculatorTwo;
+package weekOne.calculatorTwo;
 
 public interface Service {
     void exited();
