@@ -5,73 +5,51 @@ import weekOne.calculatorTwo.exception.CustomException;
 import java.util.Scanner;
 
 public class App {
-    static int swch = 0;
+    static Calculator calc;
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws CustomException {
 
-        IntegratedService integratedService;
-
-        // 원 넓이 / 사칙연산 선택
-        System.out.print("Which mode do you want to play? (Circle/Operators) : ");
-        String mode = scanner.nextLine();
+        // 원 넓이 / 사칙연산 선택 및 나머지 조건 입력
         while(true){
-            switch (mode){
-                case "Circle":
-                    while(swch != 1){
-                        circleLoop();
-                    }
-                    break;
+            System.out.print("Which mode do you want to play? (Circle/Operators) : ");
 
-                case "Operators":
-                    while(swch != 1){
-                        rectLoop();
-                    }
+            String mode = upper(scanner.nextLine());
+            while (true){
+                if(mode.equals("circle")){
+                    System.out.print("반지름을 입력하세요 : ");
+                    int num1 = Integer.parseInt(scanner.nextLine());
+
+                    calc = new Calculator(num1);
+                }else if(mode.equals("rect")){
+                    System.out.print("첫번째 정수를 입력하세요 : ");
+                    int num1 = Integer.parseInt(scanner.nextLine());
+                    System.out.print("두번째 정수를 입력하세요 : ");
+                    int num2 = Integer.parseInt(scanner.nextLine());
+                    System.out.print("연산자를 입력하세요 : ");
+                    char operator = scanner.nextLine().charAt(0);
+
+                    calc = new Calculator(num1, num2, operator);
+                }
+
+                System.out.println("Answer : " + calc.getAns());
+
+                System.out.print("How do you want to play? (change/exit/removeFirst/inquiry) ");
+                String query = scanner.nextLine();
+
+                if(query.equals("exit")){
+                    calc.exited();
+                }else if(query.equals("removeFirst")){
+                    calc.removeFirst();
+                } else if (query.equals("inquiry")) {
+                    calc.inquiry();
+                } else if (query.equals("change")) {
                     break;
+                }
             }
         }
     }
 
-    public static void circleLoop() throws CustomException {
-        System.out.print("반지름의 길이를 입력하세요 : ");
-        int numOne = Integer.parseInt(scanner.next());
-
-        IntegratedService integratedService = new IntegratedService(numOne);
-        integratedService.DataPrint("Circle");
-        otherProcess(integratedService);
-    }
-
-    public static void rectLoop() throws CustomException{
-        System.out.print("첫 번째 숫자를 입력하세요 : ");
-        int num = Integer.parseInt(scanner.next());
-        System.out.print("두 번째 숫자를 입력하세요 : ");
-        int numTwo = Integer.parseInt(scanner.next());
-        System.out.print("사용할 연산자를 입력하세요 : ");
-        char oper = scanner.next().charAt(0);
-
-        IntegratedService integratedService = new IntegratedService(num, numTwo, oper);
-        integratedService.DataPrint("Operators");
-        otherProcess(integratedService);
-    }
-
-    public static void otherProcess(IntegratedService integratedService){
-        System.out.println();
-        System.out.print("Continue? (exit / remove / inquiry) ");
-        switch (scanner.next()) {
-            case "exit":
-                swch++;
-                integratedService.exited();
-                break;
-            case "remove":
-                // remove first value.
-                integratedService.remove();
-                break;
-            case "inquiry":
-                // Basket status
-                integratedService.inquiry();
-                break;
-            default:
-                System.out.println("This is not a valid operation.");
-        }
-        System.out.println();
+    public static String upper(String mode){
+        return mode.toLowerCase();
     }
 }

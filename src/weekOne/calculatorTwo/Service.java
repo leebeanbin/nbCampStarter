@@ -2,6 +2,6 @@ package weekOne.calculatorTwo;
 
 public interface Service {
     void exited();
-    void remove();
+    void removeFirst();
     void inquiry();
 }

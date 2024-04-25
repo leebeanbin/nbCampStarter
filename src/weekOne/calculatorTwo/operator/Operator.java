@@ -1,5 +1,5 @@
 package weekOne.calculatorTwo.operator;
 
 public interface Operator {
-    int operate();
+    double operate(int a, int b);
 }
