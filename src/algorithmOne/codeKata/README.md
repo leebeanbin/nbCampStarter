@@ -42,6 +42,87 @@
   - 트리의 꼭대기는 root 노드이며, 자식을 가지지 않는 노드는 leaf 노드입니다.
 ![img.png](imgs/img.png)
 
+
+---
+
+# 알고리즘 심화
+
+>**1. 알고리즘에 대해서**
+
+알고리즘은 어떤 작업을 수행하기 위해 입력을 받아서 원하는 출력을 만들어내는 과정을 기술 한 것 입니다.
+
+위의 알고리즘의 효율성과 작업 시간을 표현하기 위해서 나온 개념이 **시간복잡도**라고 합니다. 또한, **의사코드**는 Pseudo-code로 컴퓨터 프로그래밍이나 알고리즘이 수행해야 할 내용을 논리적으로 서술해 놓은 것입니다.
+
+> 2. 알고리즘 예시
+
+- 실제 코드 예시
+```java
+import java.util.Scanner;
+
+public static void main(String[] args) {
+  Scanner scanner = new Scanner(System.in);
+  int[] scoreBox = new int[100];
+  int maxScore = 0; 
+  
+  for(int i = 0; i < 100; i++){
+      int score = scanner.nextInt();
+      maxScore = Math.max(score, maxScore);
+      
+      scoreBox[i] = score; 
+  }
+
+  System.out.println(maxScore);
+}
+```
+
+- Psuedo-code 예시(maxValue 찾기)
+```textmate
+// 1차원 배열을 입력으로 받는다.
+maxScore(scoreBox[]){
+    // 최댓값을 초기화
+    max <- 0;
+    
+    // 배열의 요소 갯수만큼 반복한다.
+    for(i = 0; i < scoreBox.length; i++) do {
+            // 해당 배열의 요소 값이 최댓값보다 크거나 같다면
+            if(scoreBox[i] >= max) then{
+                // 해당 값을 최댓값으로 지정한다.
+                max <- scoreBox[i];
+            }
+        }
+    }
+}
+```
+
+- 모든 요소 곱하고 더하기
+```textmate
+multiplyAllElements(a[])
+{
+	sum <- 0;
+	
+	for (i <- 0; i < a.length-1; i <- i+1) do { 
+		for (j <- 0; j < a.length-1; j <- j+1) do {
+			sum <- sum + a[i] * a[j];
+        }
+	}
+	
+	return sum;
+}
+```
+
+## Time Complexity
+`시간 복잡도`라는 것은 알고리즘이 문제를 얼마나 빠르게 해결했는지 평가하는 지표로 사용하는 것이 시간입니다. 이때, 소요시간과 입력값의 상관 관계를 표한하는 것입니다.
+![img.png](img.png)
+
+- **Big-O 표기법**
+Big-O notation은 알고리즘의 입력의 크기가 n이면, n^2에 비례하는 시간이 소요된다는 것을 의미합니다.
+![img_1.png](img_1.png)
+
+> **O(1) < O( 𝑙𝑜𝑔𝑛 ) < O(n) < O(n 𝑙𝑜𝑔𝑛 ) < O( 𝑛2 ) < O( 2𝑛 ) < O(n!)**
+
+위 같은 시간 복잡도는 수치를 단순화해서 단순하게 경향성을 보기 때문에 위 같은 방법으로 비교를 합니다!
+
+
 > **Images References**
 > 1. https://www.geeksforgeeks.org/what-is-linked-list/
 > 2. https://www.geeksforgeeks.org/implementation-of-hash-table-in-python-using-separate-chaining/
@@ -49,6 +130,4 @@
 > 4. https://www.geeksforgeeks.org/stack-data-structure/
 > 5. https://www.geeksforgeeks.org/introduction-to-queue-data-structure-and-algorithm-tutorials/
 > 6. https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/
-
----
-## 자료구조를 직접 구현해보자!
+> 7. http://devwebcl.blogspot.com/2016/12/big-o-comparison.html
