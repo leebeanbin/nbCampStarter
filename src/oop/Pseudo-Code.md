@@ -124,16 +124,24 @@ Main:
     사각형의 경우 각 변의 길이를 double의 형식으로 받는다.
     연산자를 입력 받는다.
     모드와 변수를 파라미터로 받는 클래스의 객체(Calculator라고 명명)를 생성한다.
+    
+    remove/inquiry/exit 중 선택하게 한다. nextLine()
+    Calculator의 선택 입력값 주입
 Calculator:
     Calculator 내부에 circle/rect 객체를 선언한다.(의존성 주입)
     Calculator의 생성자를 만든다.
     Circle 계산하는 객체 주입
     변수 
-    Rect 계산하는 객체 주입
+    Rect 계산하는 객체 주입 
     
+    원 계산 결과 출력 및 저장
+    사각형 계산 결과 출력 및 저장
     
-    
+    프로세스 세터 설정
+    프로세스에 대한 서비스 구현 
 ```
+
+이런 식으로 진행해봤습니다! 이상으로 오늘 치 TIL은 마치겠습니다.
 
 > **References**
 > 1. https://sujinlee.me/pseudocode/)
