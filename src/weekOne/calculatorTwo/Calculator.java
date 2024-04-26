@@ -14,8 +14,8 @@ public class Calculator implements Service{
     public Calculator(int a) {
         this.data = new CircleCalculator(a).calculate();
     }
-    public Calculator(int a, int b, char oper) {
-        this.data = new OperateCalculator(a, b, oper).calculate(oper);
+    public Calculator(int a, int b, String oper) {
+        this.data = new OperateCalculator(a, b, oper).getData();
     }
 
     // 얻은 data에 방금 들어간 요소를 main에서 출력하기 위한 것

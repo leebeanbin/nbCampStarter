@@ -29,9 +29,9 @@ public class App {
                     System.out.print("두번째 정수를 입력하세요 : ");
                     int num2 = Integer.parseInt(scanner.nextLine());
                     System.out.print("연산자를 입력하세요 : ");
-                    char operator = scanner.nextLine().charAt(0);
+                    String operator = scanner.nextLine();
 
-                    calc = new Calculator(num1, num2, operator);
+                    calc = new Calculator(num1, num2,operator);
                 }
 
                 System.out.println("Answer : " + calc.getAns());
