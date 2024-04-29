@@ -1,8 +1,5 @@
 package spartaCalculator.weekOne.calculatorTwo.fixCalc;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Calculator<T>{
 
     private T mode;
@@ -60,25 +57,22 @@ public class Calculator<T>{
         return answer;
     }
 
-    public boolean exit(){
+    public void exit(){
         System.out.println("This program will be shut down.");
-        return true;
     }
 
-    public boolean remove(){
+    public void remove(){
         System.out.println("Removing " + numberRepository.getData().getFirst());
         numberRepository.getData().removeFirst();
-        return false;
     }
 
-    public boolean inquiry(){
+    public void inquiry(){
         System.out.print("Data Status : ");
         numberRepository.getData().forEach(ele -> System.out.print(ele + " "));
         System.out.println("\n");
-        return false;
     }
 
-    public boolean change() {
-        return true;
+    public void change() {
+        numberRepository.getData().clear();
     }
 }

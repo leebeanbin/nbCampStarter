@@ -51,18 +51,21 @@ public class Parser {
         return calculator.calculate();
     }
 
-    public boolean parseProcess(String process) throws CustomException {
+    public void parseProcess(String process) throws CustomException {
         if(!Pattern.matches(PROCESS_REG, process)){
             throw new CustomException("This is not a valid process");
         }
 
-        return switch (process) {
+        switch (process) {
             case "exit" -> calculator.exit();
             case "remove" -> calculator.remove();
             case "inquiry" -> calculator.inquiry();
-            case "change" -> calculator.change();
+            case "change" -> {
+
+                calculator.change();
+            }
             default -> throw new IllegalStateException("Unexpected value: " + process);
-        };
+        }
 
     }
 }

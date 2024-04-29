@@ -13,4 +13,8 @@ public class NumberRepository {
     public List<Double> getData() {
         return data;
     }
+
+    public void clearData(){
+        data.clear();
+    }
 }
