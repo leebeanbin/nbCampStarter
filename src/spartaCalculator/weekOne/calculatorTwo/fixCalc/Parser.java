@@ -2,11 +2,11 @@ package spartaCalculator.weekOne.calculatorTwo.fixCalc;
 
 import spartaCalculator.weekOne.calculatorTwo.exception.CustomException;
 
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Parser {
     private static final String MODE_REG = "\\b(circle|rect)\\b";
+    private static final String PROCESS_REG = "\\b(exit|remove|inquiry|change)\\b";
     private static final String OPERATION_REG = "[+\\-*/%]";
 
     private final Calculator<Object> calculator = new Calculator<>();
@@ -49,5 +49,20 @@ public class Parser {
 
     public double executeCalculator() {
         return calculator.calculate();
+    }
+
+    public boolean parseProcess(String process) throws CustomException {
+        if(!Pattern.matches(PROCESS_REG, process)){
+            throw new CustomException("This is not a valid process");
+        }
+
+        return switch (process) {
+            case "exit" -> calculator.exit();
+            case "remove" -> calculator.remove();
+            case "inquiry" -> calculator.inquiry();
+            case "change" -> calculator.change();
+            default -> throw new IllegalStateException("Unexpected value: " + process);
+        };
+
     }
 }

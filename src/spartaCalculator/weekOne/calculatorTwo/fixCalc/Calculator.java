@@ -11,8 +11,8 @@ public class Calculator<T>{
     protected double secondNumber;
     protected String operatorName;
 
-    // 계속 누적되지 않고 호출마다 db를 비워주기 위해 여기서 선언 및 정의
-    private List<Double> data = new ArrayList<>();
+    private final NumberRepository numberRepository = new NumberRepository();
+
 
     public Calculator(){}
 
@@ -45,21 +45,40 @@ public class Calculator<T>{
         this.operatorName = operName;
     }
 
-    public List<Double> getData() {
-        return data;
-    }
 
     public double calculate() {
         double answer;
         if(mode instanceof  CircleCalculator){
             answer = ((CircleCalculator) mode).calculateCircle(firstNumber);
-            data.add(answer);
+            String ans = String.format("%.2f", answer);
+            numberRepository.addData(ans);
         }else{
             answer = ((RectCalculator)mode).calculateRect(firstNumber,secondNumber,operatorName);
-            data.add(answer);
+            String ans = String.format("%.2f", answer);
+            numberRepository.addData(ans);
         }
         return answer;
     }
 
+    public boolean exit(){
+        System.out.println("This program will be shut down.");
+        return true;
+    }
 
+    public boolean remove(){
+        System.out.println("Removing " + numberRepository.getData().getFirst());
+        numberRepository.getData().removeFirst();
+        return false;
+    }
+
+    public boolean inquiry(){
+        System.out.print("Data Status : ");
+        numberRepository.getData().forEach(ele -> System.out.print(ele + " "));
+        System.out.println("\n");
+        return false;
+    }
+
+    public boolean change() {
+        return true;
+    }
 }

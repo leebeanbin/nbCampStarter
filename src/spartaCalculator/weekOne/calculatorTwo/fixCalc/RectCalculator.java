@@ -1,7 +1,9 @@
 package spartaCalculator.weekOne.calculatorTwo.fixCalc;
 
-public class RectCalculator{
+import java.util.ArrayList;
+import java.util.List;
 
+public class RectCalculator{
     public double calculateRect(double a, double b, String oper){
         // oper로써 들어오는 연산자를 내가 저장해둔 단어로 매핑하여 연산을 실시한다.
         switch (oper){

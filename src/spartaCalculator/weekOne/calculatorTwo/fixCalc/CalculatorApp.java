@@ -4,7 +4,7 @@ import spartaCalculator.weekOne.calculatorTwo.exception.CustomException;
 import java.util.Scanner;
 
 public class CalculatorApp {
-
+    static NumberRepository numberRepository = new NumberRepository();
     public static boolean start() throws CustomException{
         Parser parser = new Parser();
         Scanner scanner = new Scanner(System.in);
@@ -13,29 +13,39 @@ public class CalculatorApp {
         String mode = stringReplace(scanner.nextLine());
         parser.parseMode(mode);
 
-        if(mode.equals("circle")){
-            System.out.print("Type the radius of the circle: ");
-            String radius = stringReplace(scanner.nextLine());
+        int sign = 0;
+        boolean element = false;
 
-            parser.parseFirstNum(radius);
-        }else{
-            System.out.print("Type the first number of the rectangle: ");
-            String first = stringReplace(scanner.nextLine());
-            parser.parseFirstNum(first);
+        while(!element){
+            if(mode.equals("circle")){
+                System.out.print("Type the radius of the circle: ");
+                String radius = stringReplace(scanner.nextLine().toLowerCase());
+                parser.parseFirstNum(radius);
+            }else{
+                System.out.print("Type the first number of the rectangle: ");
+                String first = stringReplace(scanner.nextLine().toLowerCase());
+                parser.parseFirstNum(first);
 
-            System.out.print("Type the operation : ");
-            String operation = stringReplace(scanner.nextLine());
-            parser.parseOperator(operation);
+                System.out.print("Type the operation : ");
+                String operation = stringReplace(scanner.nextLine().toLowerCase());
+                parser.parseOperator(operation);
 
-            System.out.print("Type the second number of the rectangle: ");
-            String second = stringReplace(scanner.nextLine());
-            parser.parseSecondNum(second);
+                System.out.print("Type the second number of the rectangle: ");
+                String second = stringReplace(scanner.nextLine().toLowerCase());
+                parser.parseSecondNum(second);
+            }
+
+            String result = String.format("%.2f", parser.executeCalculator());
+            numberRepository.addData(result);
+            System.out.println("Here is the result: " + result);
+
+            System.out.print("What kind of process do you want to play? (exit/remove/inquiry/change) : ");
+            String nextProcess = stringReplace(scanner.nextLine().toLowerCase());
+            element = parser.parseProcess(nextProcess);
         }
 
-        String result = String.format("%.2f", parser.executeCalculator());
-        System.out.println("Here is the result: " + result);
-
-        return true;
+        scanner.close();
+        return element;
     }
 
     public static String stringReplace(String input){
