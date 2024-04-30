@@ -9,7 +9,7 @@ public class Parser {
     private static final String PROCESS_REG = "\\b(exit|remove|inquiry|change)\\b";
     private static final String OPERATION_REG = "[+\\-*/%]";
 
-    private final Calculator<Object> calculator = new Calculator<>();
+    private final Calculator<Object> calculator = new Calculator<>(new NumberRepository());
 
     public void parseMode(String mode) throws CustomException{
         if(!Pattern.matches(MODE_REG, mode)){

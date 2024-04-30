@@ -1,6 +1,6 @@
 package spartaCalculator.weekOne.calculatorTwo.fixCalc;
 
-public class Calculator<T>{
+public class Calculator<T> extends NumberRepository{
 
     private T mode;
     private double radius;
@@ -8,10 +8,12 @@ public class Calculator<T>{
     protected double secondNumber;
     protected String operatorName;
 
-    private final NumberRepository numberRepository = new NumberRepository();
+    private final NumberRepository numberRepository;
 
+    public Calculator(NumberRepository numberRepository){
+        this.numberRepository = numberRepository;
+    }
 
-    public Calculator(){}
 
     public double getRadius() {
         return radius;

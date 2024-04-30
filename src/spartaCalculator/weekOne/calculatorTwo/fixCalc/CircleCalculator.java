@@ -6,6 +6,7 @@ import static java.lang.Math.*;
 public class CircleCalculator{
 
     public CircleCalculator() {
+        super();
     }
 
     public double calculateCircle(double radius) {
