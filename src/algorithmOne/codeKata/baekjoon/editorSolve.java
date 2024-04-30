@@ -3,11 +3,9 @@ package algorithmOne.codeKata.baekjoon;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.Scanner;
 
 public class editorSolve {
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
         LinkedList<Character> list = new LinkedList<>(); // Use LinkedList for efficient editing
