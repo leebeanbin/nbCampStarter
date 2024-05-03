@@ -1,50 +1,12 @@
 package finalCalculator;
 
-import javax.management.OperationsException;
-import javax.naming.OperationNotSupportedException;
 import java.util.List;
 
-public class Calculator {
-    private List<Double> results;
-    private List<Double> circleResults;
+public abstract class Calculator {
+    private List<Double> results; // 각 계산 클래스에 연산 후 받은 값을 저장하기 위한 List
 
-    public Calculator(List<Double> results,List<Double> circleResults ) {
-        this.results = results;
-        this.circleResults = circleResults;
-    }
-
-    public double CircleCalculate(int radius){
-        return Math.PI*radius*radius;
-    }
-
-    public double calculate(int a, int b, char operator) {
-        double result = 0;
-
-        switch (operator) {
-            case '+':
-                result = a + b;
-                break;
-            case '-':
-                result = a - b;
-                break;
-            case '*':
-                result = a * b;
-                break;
-            case '/':
-                if(b != 0){
-                    double v = (double) a / b;
-                }else{
-                    throw new ArithmeticException();
-                }
-                break;
-            case '%':
-                result = a % b;
-                break;
-            default:
-                throw new UnsupportedOperationException();
-        };
-
-        return result;
+    public Calculator(List<Double> result) {
+        this.results = result;
     }
 
     public List<Double> getResults() {
@@ -56,31 +18,11 @@ public class Calculator {
     }
 
 
-    public List<Double> getCircleResults() {
-        return circleResults;
-    }
+    abstract void remove(Object remove);
 
-    public void setCircleResults(List<Double> circleResults) {
-        this.circleResults = circleResults;
-    }
+    abstract void inquiry(Object query);
 
-    public void remove(Object remove){
-        if(remove.equals("remove")) results.removeFirst();
-    }
 
-    public void inquiryProgram(Object inquiry){
-        if(inquiry.equals("inquiry")){
-            results.forEach(i -> System.out.println(i + " "));
-        }
-    }
-
-    public void inquiryCircle(Object s) {
-        if(s.equals("inquiry")){
-            circleResults.forEach(i -> System.out.println(i + " "));
-        }
-    }
-
-    public void removeCircle(String s) {
-        if(s.equals("remove")) circleResults.removeFirst();
-    }
+    abstract double calculate(int firstNumber, int secondNumber, char operator);
+    abstract double calculate(int radius);
 }
