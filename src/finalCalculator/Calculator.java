@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    private List<Double> results = new ArrayList<>();
+    private List<Double> results;
+
+    public Calculator(List<Double> results) {
+        this.results = results;
+    }
 
     public double calculate(int a, int b, char operator){
         double result = switch (operator) {
@@ -25,5 +29,15 @@ public class Calculator {
 
     public void setResults(List<Double> results) {
         this.results = results;
+    }
+
+    public void remove(Object remove){
+        if(remove.equals("remove")) results.removeFirst();
+    }
+
+    public void inquiryProgram(Object inquiry){
+        if(inquiry.equals("inquiry")){
+            results.forEach(i -> System.out.println(i + " "));
+        }
     }
 }
