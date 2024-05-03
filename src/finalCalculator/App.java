@@ -8,7 +8,12 @@ import java.util.ArrayList;
 public class App {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Calculator arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>());
+        Calculator arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>()
+        , new AddOperator()
+        , new SubtractOperator()
+        , new MultiplyOperator()
+        , new DivideOperator());
+
         Calculator circleCalculator = new CircleCalculator(new ArrayList<>());
 
         boolean flag = false;

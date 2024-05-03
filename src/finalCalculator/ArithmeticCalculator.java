@@ -3,8 +3,19 @@ package finalCalculator;
 import java.util.List;
 
 public class ArithmeticCalculator extends Calculator{
-    public ArithmeticCalculator(List<Double> result) {
+    private final AddOperator addOperator;
+    private final SubtractOperator subtractOperator;
+    private final MultiplyOperator multiplyOperator;
+    private final DivideOperator divideOperator ;
+
+    public ArithmeticCalculator(List<Double> result , AddOperator addOperator,
+                                SubtractOperator subtractOperator, MultiplyOperator multiplyOperator,
+                                DivideOperator divideOperator) {
         super(result);
+        this.addOperator = addOperator;
+        this.subtractOperator = subtractOperator;
+        this.multiplyOperator = multiplyOperator;
+        this.divideOperator = divideOperator;
     }
 
     @Override
@@ -13,23 +24,20 @@ public class ArithmeticCalculator extends Calculator{
 
         switch (operator) {
             case '+':
-                result = a + b;
+                result = addOperator.operate(a,b);
                 break;
             case '-':
-                result = a - b;
+                result = subtractOperator.operate(a,b);
                 break;
             case '*':
-                result = a * b;
+                result = multiplyOperator.operate(a,b);
                 break;
             case '/':
                 if(b != 0){
-                    double v = (double) a / b;
+                    result = divideOperator.operate(a,b);
                 }else{
                     throw new ArithmeticException();
                 }
-                break;
-            case '%':
-                result = a % b;
                 break;
             default:
                 throw new UnsupportedOperationException();
