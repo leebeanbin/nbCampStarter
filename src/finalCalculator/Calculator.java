@@ -22,7 +22,4 @@ public abstract class Calculator {
 
     abstract void inquiry(Object query);
 
-
-    abstract double calculate(int firstNumber, int secondNumber, char operator);
-    abstract double calculate(int radius);
 }

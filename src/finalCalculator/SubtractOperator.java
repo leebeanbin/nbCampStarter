@@ -1,8 +1,20 @@
 package finalCalculator;
 
-public class SubtractOperator implements Operator {
+public class SubtractOperator<T extends Number> implements Operator<T> {
+
+    private final Class<T> type;
+
+    public SubtractOperator(Class<T> type) {
+        this.type = type;
+    }
+
     @Override
-    public double operate(int a, int b) {
-        return a-b;
+    public T operate(T a, T b) {
+        double result = a.doubleValue() - b.doubleValue();
+        // 제네릭은 말 그대로 널리 사용이되는 타입으로, 사칙연산 나누기 사칙연산의
+        // 느낌처럼 받아들여지게 됩니다.
+
+
+        return NumberConversionUtils.convertNumberToType(result, type);
     }
 }

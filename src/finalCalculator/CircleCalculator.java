@@ -7,7 +7,7 @@ public class CircleCalculator extends Calculator{
         super(result);
     }
 
-    double calculate(int radius) {
+    public double calculate(int radius) {
         return Math.PI * Math.pow(radius, 2);
     }
 
@@ -23,8 +23,4 @@ public class CircleCalculator extends Calculator{
         if(query.equals("inquiry")) super.getResults().forEach(i -> System.out.println(i + " "));
     }
 
-    @Override
-    double calculate(int firstNumber, int secondNumber, char operator) {
-        return 0;
-    }
 }

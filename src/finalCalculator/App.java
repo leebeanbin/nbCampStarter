@@ -4,17 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class App {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Calculator arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>()
-        , new AddOperator()
-        , new SubtractOperator()
-        , new MultiplyOperator()
-        , new DivideOperator());
-
-        Calculator circleCalculator = new CircleCalculator(new ArrayList<>());
+        ArithmeticCalculator<Double> arithmeticCalculator = new ArithmeticCalculator(new ArrayList<>(), Double.class);
+        CircleCalculator circleCalculator = new CircleCalculator(new ArrayList<>());
 
         boolean flag = false;
         while(!flag){
@@ -22,9 +18,9 @@ public class App {
             int mode = Integer.parseInt(br.readLine());
             if(mode == 1){
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-                int firstNumber = Integer.parseInt(br.readLine());
+                double firstNumber = Integer.parseInt(br.readLine());
                 System.out.print("두 번째 숫자를 입력하세요: ");
-                int secondNumber = Integer.parseInt(br.readLine());
+                double secondNumber = Integer.parseInt(br.readLine());
 
                 System.out.print("사칙연산 기호를 입력하세요:  ");
                 char operator = br.readLine().charAt(0);
@@ -35,6 +31,13 @@ public class App {
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
                 arithmeticCalculator.inquiry(br.readLine());
+
+                System.out.println("저장된 연산결과 중 입력한 값보다 큰 값들을 조회하시겠습니까? (lambda 입력 시 조회)");
+                if(Objects.equals(br.readLine(), "lambda")){
+                    System.out.println("기준 값을 입력하세요 : ");
+                    double lambda = Double.parseDouble(br.readLine());
+                    arithmeticCalculator.printResultGreaterThan(lambda);
+                }
 
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
                 arithmeticCalculator.remove(br.readLine());
